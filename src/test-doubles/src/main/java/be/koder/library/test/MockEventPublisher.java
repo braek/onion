@@ -22,4 +22,8 @@ public final class MockEventPublisher implements EventPublisher {
         }
         return Optional.empty();
     }
+
+    public void clear() {
+        events.clear();
+    }
 }

@@ -16,6 +16,7 @@ public enum TestApplicationContext {
     public final ListBooks listBooks = new ListBooksQuery(bookRepository);
 
     public void clear() {
+        eventPublisher.clear();
         bookRepository.clear();
     }
 }
