@@ -14,14 +14,7 @@ public final class Isbn {
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
             throw new InvalidIsbnException(sanitized);
         }
-        this.value = String.format(
-                "%s-%s-%s-%s-%s",
-                sanitized.substring(0, 3),
-                sanitized.substring(3, 5),
-                sanitized.substring(5, 10),
-                sanitized.substring(10, 12),
-                sanitized.charAt(12)
-        );
+        this.value = sanitized;
     }
 
     private String sanitize(final String str) {

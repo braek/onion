@@ -4,10 +4,10 @@ import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.domain.book.Book;
 import be.koder.library.domain.book.BookAdded;
 import be.koder.library.domain.book.BookSnapshot;
+import be.koder.library.test.BookObjectMother;
 import be.koder.library.test.MockBookRepository;
 import be.koder.library.test.MockEventPublisher;
 import be.koder.library.vocabulary.book.BookId;
-import be.koder.library.vocabulary.book.Isbn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -29,17 +29,15 @@ class AddBookMutatorTest {
     @DisplayName("when Book added")
     class TestHappyFlow implements AddBookPresenter {
 
-        private final String title = "Harry Potter and the Philosopher's Stone";
-        private final String isbn = "0123456789123";
-        private final String author = "J. K. Rowling";
+        private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets;
         private boolean addedCalled;
         private BookId bookId;
-        private BookSnapshot book;
+        private BookSnapshot savedBook;
 
         @BeforeEach
         void setup() {
-            addBookMutator.execute(new AddBookCommand(title, isbn, author), this);
-            book = bookRepository.getById(bookId)
+            addBookMutator.execute(new AddBookCommand(book.title(), book.isbn().toString(), book.author()), this);
+            savedBook = bookRepository.getById(bookId)
                     .map(Book::takeSnapshot)
                     .orElseThrow();
         }
@@ -47,10 +45,10 @@ class AddBookMutatorTest {
         @Test
         @DisplayName("it should be saved")
         void bookSaved() {
-            assertThat(book.id()).isEqualTo(bookId);
-            assertThat(book.title()).isEqualTo(title);
-            assertThat(book.isbn()).isEqualTo(Isbn.fromString(isbn));
-            assertThat(book.author()).isEqualTo(author);
+            assertThat(savedBook.id()).isEqualTo(bookId);
+            assertThat(savedBook.title()).isEqualTo(book.title());
+            assertThat(savedBook.isbn()).isEqualTo(book.isbn());
+            assertThat(savedBook.author()).isEqualTo(book.author());
         }
 
         @Test
@@ -86,14 +84,16 @@ class AddBookMutatorTest {
     @DisplayName("when Book added with invalid ISBN")
     class TestInvalidIsbn implements AddBookPresenter {
 
-        private final String title = "Harry Potter and the Philosopher's Stone";
-        private final String isbn = "0123456789";
-        private final String author = "J. K. Rowling";
+        private final String invalidIsbn = "1408855669";
         private boolean invalidIsbnCalled;
 
         @BeforeEach
         void setup() {
-            addBookMutator.execute(new AddBookCommand(title, isbn, author), this);
+            addBookMutator.execute(new AddBookCommand(
+                    BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets.title(),
+                    invalidIsbn,
+                    BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets.author()
+            ), this);
         }
 
         @Test
