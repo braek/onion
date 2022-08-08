@@ -1,6 +1,7 @@
 package be.koder.library.test;
 
 import be.koder.library.api.book.AddBookPresenter;
+import be.koder.library.domain.book.BookSnapshot;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,15 +19,13 @@ public class AddBookTest {
     @DisplayName("when Book added")
     class TestHappyFlow implements AddBookPresenter {
 
-        private final String title = "Harry Potter and the Philosopher's Stone";
-        private final String isbn = "0123456789123";
-        private final String author = "J. K. Rowling";
+        private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets;
         private boolean addedCalled;
         private BookId bookId;
 
         @BeforeEach
         void setup() {
-            TestApplicationContext.INSTANCE.addBook.addBook(title, isbn, author, this);
+            TestApplicationContext.INSTANCE.addBook.addBook(book.title(), book.isbn().toString(), book.author(), this);
         }
 
         @Test
@@ -52,14 +51,17 @@ public class AddBookTest {
     @DisplayName("when Book added with invalid ISBN")
     class TestInvalidIsbn implements AddBookPresenter {
 
-        private final String title = "Harry Potter and the Philosopher's Stone";
-        private final String isbn = "0123456789";
-        private final String author = "J. K. Rowling";
+        private final String invalidIsbn = "0123456789";
         private boolean invalidIsbnCalled;
 
         @BeforeEach
         void setup() {
-            TestApplicationContext.INSTANCE.addBook.addBook(title, isbn, author, this);
+            TestApplicationContext.INSTANCE.addBook.addBook(
+                    BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets.title(),
+                    invalidIsbn,
+                    BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets.author(),
+                    this
+            );
         }
 
         @Test
