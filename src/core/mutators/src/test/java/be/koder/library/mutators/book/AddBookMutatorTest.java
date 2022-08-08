@@ -15,7 +15,7 @@ class AddBookMutatorTest {
 
     @Nested
     @DisplayName("when Book added")
-    class TestHappy implements AddBookPresenter {
+    class TestHappyFlow implements AddBookPresenter {
 
         private final String title = "Harry Potter and the Philosopher's Stone";
         private final String isbn = "0-7475-3269-9";
