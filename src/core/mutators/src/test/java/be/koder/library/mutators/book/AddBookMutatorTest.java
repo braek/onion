@@ -1,8 +1,6 @@
-package be.koder.library.test;
+package be.koder.library.mutators.book;
 
-import be.koder.library.api.book.AddBook;
 import be.koder.library.api.book.AddBookPresenter;
-import be.koder.library.mutators.book.AddBookMutator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -10,14 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@DisplayName("Given an API to add Books to library")
-public class AddBookTest {
+@DisplayName("Given a mutator to add Books to library")
+class AddBookMutatorTest {
 
-    private final AddBook addBook = new AddBookMutator();
+    private final AddBookMutator addBookMutator = new AddBookMutator();
 
     @Nested
     @DisplayName("when Book added")
-    class TestHappyFlow implements AddBookPresenter {
+    class TestHappy implements AddBookPresenter {
 
         private final String title = "Harry Potter and the Philosopher's Stone";
         private final String isbn = "0-7475-3269-9";
@@ -26,7 +24,7 @@ public class AddBookTest {
 
         @BeforeEach
         void setup() {
-            addBook.addBook(title, isbn, author, this);
+            addBookMutator.execute(new AddBookCommand(title, isbn, author), this);
         }
 
         @Test
