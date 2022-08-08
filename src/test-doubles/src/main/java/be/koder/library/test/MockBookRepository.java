@@ -39,4 +39,8 @@ public final class MockBookRepository implements BookRepository, BookArchive {
                 it.author()
         )).toList();
     }
+
+    public void clear() {
+        data.clear();
+    }
 }

@@ -14,4 +14,8 @@ public enum TestApplicationContext {
 
     public final AddBook addBook = new AddBookMutator(bookRepository, eventPublisher);
     public final ListBooks listBooks = new ListBooksQuery(bookRepository);
+
+    public void clear() {
+        bookRepository.clear();
+    }
 }

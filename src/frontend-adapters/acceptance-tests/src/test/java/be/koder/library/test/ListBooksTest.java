@@ -24,6 +24,7 @@ class ListBooksTest {
         void setup() {
             var book = BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets;
             var presenter = new MockAddBookPresenter();
+            TestApplicationContext.INSTANCE.clear();
             TestApplicationContext.INSTANCE.addBook.addBook(book.title(), book.isbn().toString(), book.author(), presenter);
             items.addAll(TestApplicationContext.INSTANCE.listBooks.listBooks());
         }
@@ -31,7 +32,7 @@ class ListBooksTest {
         @Test
         @DisplayName("it should return items")
         void itemsReturned() {
-            assertThat(items).isNotEmpty();
+            assertThat(items).hasSize(1);
         }
     }
 }

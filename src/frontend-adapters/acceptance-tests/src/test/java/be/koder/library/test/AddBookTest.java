@@ -28,6 +28,7 @@ public class AddBookTest {
 
         @BeforeEach
         void setup() {
+            TestApplicationContext.INSTANCE.clear();
             TestApplicationContext.INSTANCE.addBook.addBook(book.title(), book.isbn().toString(), book.author(), this);
             savedBook = TestApplicationContext.INSTANCE.listBooks.listBooks().stream()
                     .filter(it -> it.id().equals(bookId))
