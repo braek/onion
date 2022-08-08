@@ -1,1 +1,6 @@
+dependencies {
+    implementation project(':api')
+    testImplementation project(':test-doubles')
+}
+
 description = 'acceptance-tests'

@@ -1,1 +1,5 @@
+dependencies {
+    implementation project(':vocabulary')
+}
+
 description = 'domain'
