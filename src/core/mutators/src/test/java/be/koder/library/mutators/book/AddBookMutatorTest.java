@@ -2,6 +2,7 @@ package be.koder.library.mutators.book;
 
 import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.domain.book.Book;
+import be.koder.library.domain.book.BookAdded;
 import be.koder.library.domain.book.BookSnapshot;
 import be.koder.library.test.MockBookRepository;
 import be.koder.library.test.MockEventPublisher;
@@ -53,7 +54,11 @@ class AddBookMutatorTest {
         @Test
         @DisplayName("it should publish event")
         void eventPublished() {
-            assertThat(eventPublisher.getLastEvent()).isNotEmpty();
+            assertThat(eventPublisher.getLastEvent()).hasValueSatisfying(it -> {
+                assertThat(it).isInstanceOf(BookAdded.class);
+                var event = (BookAdded) it;
+                assertThat(event.bookId()).isEqualTo(bookId);
+            });
         }
 
         @Test
