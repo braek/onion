@@ -7,12 +7,14 @@ import be.koder.library.domain.book.BookSnapshot;
 import be.koder.library.test.MockBookRepository;
 import be.koder.library.test.MockEventPublisher;
 import be.koder.library.vocabulary.book.BookId;
+import be.koder.library.vocabulary.book.Isbn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,7 +30,7 @@ class AddBookMutatorTest {
     class TestHappyFlow implements AddBookPresenter {
 
         private final String title = "Harry Potter and the Philosopher's Stone";
-        private final String isbn = "0-7475-3269-9";
+        private final String isbn = "0123456789123";
         private final String author = "J. K. Rowling";
         private boolean addedCalled;
         private BookId bookId;
@@ -47,7 +49,7 @@ class AddBookMutatorTest {
         void bookSaved() {
             assertThat(book.id()).isEqualTo(bookId);
             assertThat(book.title()).isEqualTo(title);
-            assertThat(book.isbn()).isEqualTo(isbn);
+            assertThat(book.isbn()).isEqualTo(Isbn.fromString(isbn));
             assertThat(book.author()).isEqualTo(author);
         }
 
@@ -72,6 +74,42 @@ class AddBookMutatorTest {
         public void added(BookId bookId) {
             this.addedCalled = true;
             this.bookId = bookId;
+        }
+
+        @Override
+        public void invalidIsbn() {
+            fail("Should not be called");
+        }
+    }
+
+    @Nested
+    @DisplayName("when Book added with invalid ISBN")
+    class TestInvalidIsbn implements AddBookPresenter {
+
+        private final String title = "Harry Potter and the Philosopher's Stone";
+        private final String isbn = "0123456789";
+        private final String author = "J. K. Rowling";
+        private boolean invalidIsbnCalled;
+
+        @BeforeEach
+        void setup() {
+            addBookMutator.execute(new AddBookCommand(title, isbn, author), this);
+        }
+
+        @Test
+        @DisplayName("it should provide feedback")
+        void feedbackProvided() {
+            assertTrue(invalidIsbnCalled);
+        }
+
+        @Override
+        public void added(BookId bookId) {
+            fail("Should not be called");
+        }
+
+        @Override
+        public void invalidIsbn() {
+            this.invalidIsbnCalled = true;
         }
     }
 }

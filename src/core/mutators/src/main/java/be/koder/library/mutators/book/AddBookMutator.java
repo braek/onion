@@ -8,6 +8,8 @@ import be.koder.library.domain.book.BookAdded;
 import be.koder.library.domain.book.BookRepository;
 import be.koder.library.mutators.Mutator;
 import be.koder.library.vocabulary.book.BookId;
+import be.koder.library.vocabulary.book.InvalidIsbnException;
+import be.koder.library.vocabulary.book.Isbn;
 
 public final class AddBookMutator implements AddBook, Mutator<AddBookCommand, AddBookPresenter> {
 
@@ -26,10 +28,15 @@ public final class AddBookMutator implements AddBook, Mutator<AddBookCommand, Ad
 
     @Override
     public void execute(AddBookCommand command, AddBookPresenter presenter) {
-        final Book book = Book.createNew(command.title(), command.isbn(), command.author());
-        bookRepository.save(book);
-        final BookId bookId = book.takeSnapshot().id();
-        eventPublisher.publish(new BookAdded(bookId));
-        presenter.added(bookId);
+        try {
+            final Isbn isbn = Isbn.fromString(command.isbn());
+            final Book book = Book.createNew(command.title(), isbn, command.author());
+            bookRepository.save(book);
+            final BookId bookId = book.takeSnapshot().id();
+            eventPublisher.publish(new BookAdded(bookId));
+            presenter.added(bookId);
+        } catch (InvalidIsbnException e) {
+            presenter.invalidIsbn();
+        }
     }
 }
