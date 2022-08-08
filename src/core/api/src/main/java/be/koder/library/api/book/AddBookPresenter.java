@@ -1,5 +1,7 @@
 package be.koder.library.api.book;
 
+import be.koder.library.vocabulary.book.BookId;
+
 public interface AddBookPresenter {
-    void added();
+    void added(BookId bookId);
 }

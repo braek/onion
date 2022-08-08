@@ -1,5 +1,6 @@
 dependencies {
     implementation project(':vocabulary')
+    implementation project(':domain')
 }
 
 description = 'test-doubles'
