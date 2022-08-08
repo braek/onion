@@ -1,2 +1,1 @@
-# onion
-Onion Architecture Base Project
+# Onion Architecture Base Project

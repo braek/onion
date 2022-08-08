@@ -1,0 +1,17 @@
+rootProject.name = 'onion'
+
+include(':acceptance-tests')
+include(':api')
+include(':domain')
+include(':mutators')
+include(':queries')
+include(':test-doubles')
+include(':vocabulary')
+
+project(':acceptance-tests').projectDir = file('src/frontend-adapters/acceptance-tests')
+project(':api').projectDir = file('src/core/api')
+project(':domain').projectDir = file('src/core/domain')
+project(':mutators').projectDir = file('src/core/mutators')
+project(':queries').projectDir = file('src/core/queries')
+project(':test-doubles').projectDir = file('src/frontend-adapters/test-doubles')
+project(':vocabulary').projectDir = file('src/vocabulary')
