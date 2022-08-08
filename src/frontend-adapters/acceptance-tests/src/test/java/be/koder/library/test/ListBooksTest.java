@@ -6,9 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Given an API to list Books")
@@ -18,7 +18,7 @@ class ListBooksTest {
     @DisplayName("when it is requested")
     class TestHappyFlow {
 
-        private final List<BookListItem> items = emptyList();
+        private final List<BookListItem> items = new ArrayList<>();
 
         @BeforeEach
         void setup() {
