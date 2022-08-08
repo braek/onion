@@ -31,8 +31,8 @@ public final class AddBookMutator implements AddBook, Mutator<AddBookCommand, Ad
         try {
             final Isbn isbn = Isbn.fromString(command.isbn());
             final Book book = Book.createNew(command.title(), isbn, command.author());
-            bookRepository.save(book);
             final BookId bookId = book.takeSnapshot().id();
+            bookRepository.save(book);
             eventPublisher.publish(new BookAdded(bookId));
             presenter.added(bookId);
         } catch (InvalidIsbnException e) {
