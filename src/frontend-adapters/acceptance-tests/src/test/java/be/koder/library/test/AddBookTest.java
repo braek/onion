@@ -3,6 +3,7 @@ package be.koder.library.test;
 import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.api.book.BookListItem;
 import be.koder.library.domain.book.BookSnapshot;
+import be.koder.library.test.data.BookObjectMother;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
