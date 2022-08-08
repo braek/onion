@@ -17,9 +17,9 @@ class IsbnTest {
         @Test
         @DisplayName("it should succeed")
         void creationSucceeded() {
-            var isbn = Isbn.fromString("1112223334445");
+            var isbn = Isbn.fromString("9782223334445");
             assertThat(isbn).isNotNull();
-            assertThat(isbn.toString()).isEqualTo("1112223334445");
+            assertThat(isbn.toString()).isEqualTo("9782223334445");
         }
     }
 

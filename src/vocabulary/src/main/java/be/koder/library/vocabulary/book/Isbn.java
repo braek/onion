@@ -10,7 +10,7 @@ public final class Isbn {
 
     private Isbn(final String str) {
         final String sanitized = sanitize(str);
-        final Pattern regex = Pattern.compile("^\\d{13}$");
+        final Pattern regex = Pattern.compile("^978\\d{10}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
             throw new InvalidIsbnException(sanitized);
         }
