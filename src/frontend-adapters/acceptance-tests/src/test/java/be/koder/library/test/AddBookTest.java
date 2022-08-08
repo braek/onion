@@ -1,6 +1,7 @@
 package be.koder.library.test;
 
 import be.koder.library.api.book.AddBookPresenter;
+import be.koder.library.api.book.BookListItem;
 import be.koder.library.domain.book.BookSnapshot;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,10 +24,24 @@ public class AddBookTest {
         private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets;
         private boolean addedCalled;
         private BookId bookId;
+        private BookListItem savedBook;
 
         @BeforeEach
         void setup() {
             TestApplicationContext.INSTANCE.addBook.addBook(book.title(), book.isbn().toString(), book.author(), this);
+            savedBook = TestApplicationContext.INSTANCE.listBooks.listBooks().stream()
+                    .filter(it -> it.id().equals(bookId))
+                    .findFirst()
+                    .orElseThrow();
+        }
+
+        @Test
+        @DisplayName("it should be saved")
+        void bookSaved() {
+            assertThat(savedBook.id()).isEqualTo(bookId);
+            assertThat(savedBook.title()).isEqualTo(book.title());
+            assertThat(savedBook.isbn()).isEqualTo(book.isbn());
+            assertThat(savedBook.author()).isEqualTo(book.author());
         }
 
         @Test
