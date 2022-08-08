@@ -21,7 +21,7 @@ public class AddBookTest {
     @DisplayName("when Book added")
     class TestHappyFlow implements AddBookPresenter {
 
-        private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets;
+        private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets;
         private boolean addedCalled;
         private BookId bookId;
         private BookListItem savedBook;
@@ -74,9 +74,9 @@ public class AddBookTest {
         @BeforeEach
         void setup() {
             TestApplicationContext.INSTANCE.addBook.addBook(
-                    BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets.title(),
+                    BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets.title(),
                     invalidIsbn,
-                    BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets.author(),
+                    BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets.author(),
                     this
             );
         }

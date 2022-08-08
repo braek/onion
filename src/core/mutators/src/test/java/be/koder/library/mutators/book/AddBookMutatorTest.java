@@ -29,7 +29,7 @@ class AddBookMutatorTest {
     @DisplayName("when Book added")
     class TestHappyFlow implements AddBookPresenter {
 
-        private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets;
+        private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets;
         private boolean addedCalled;
         private BookId bookId;
         private BookSnapshot savedBook;
@@ -90,9 +90,9 @@ class AddBookMutatorTest {
         @BeforeEach
         void setup() {
             addBookMutator.execute(new AddBookCommand(
-                    BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets.title(),
+                    BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets.title(),
                     invalidIsbn,
-                    BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets.author()
+                    BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets.author()
             ), this);
         }
 

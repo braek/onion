@@ -22,7 +22,7 @@ class ListBooksTest {
 
         @BeforeEach
         void setup() {
-            var book = BookObjectMother.INSTANCE.harryPotterAndTheChamberofSecrets;
+            var book = BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets;
             var presenter = new MockAddBookPresenter();
             TestApplicationContext.INSTANCE.clear();
             TestApplicationContext.INSTANCE.addBook.addBook(book.title(), book.isbn().toString(), book.author(), presenter);

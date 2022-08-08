@@ -8,7 +8,7 @@ public enum BookObjectMother {
 
     INSTANCE;
 
-    public final BookSnapshot harryPotterAndTheChamberofSecrets = new BookSnapshot(
+    public final BookSnapshot harryPotterAndTheChamberOfSecrets = new BookSnapshot(
             BookId.createNew(),
             "Harry Potter and the Chamber of Secrets",
             Isbn.fromString("9781408855669"),
