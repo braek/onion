@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public interface Repository<K, V> {
 
-    Optional<V> get(K id);
+    Optional<V> getById(K id);
 
     void save(V aggregate);
 }

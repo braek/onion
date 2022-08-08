@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public final class MockEventPublisher implements EventPublisher {
 
-    private List<Event> events = new ArrayList<>();
+    private final List<Event> events = new ArrayList<>();
 
     @Override
     public void publish(Event event) {

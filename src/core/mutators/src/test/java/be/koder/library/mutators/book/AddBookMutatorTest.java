@@ -37,7 +37,7 @@ class AddBookMutatorTest {
         @BeforeEach
         void setup() {
             addBookMutator.execute(new AddBookCommand(title, isbn, author), this);
-            book = bookRepository.get(bookId)
+            book = bookRepository.getById(bookId)
                     .map(Book::takeSnapshot)
                     .orElseThrow();
         }

@@ -16,8 +16,8 @@ public final class Book {
         this.author = author;
     }
 
-    public static Book create(String title, String isbn, String author) {
-        return new Book(BookId.create(), title, isbn, author);
+    public static Book createNew(String title, String isbn, String author) {
+        return new Book(BookId.createNew(), title, isbn, author);
     }
 
     public static Book fromSnapshot(BookSnapshot snapshot) {

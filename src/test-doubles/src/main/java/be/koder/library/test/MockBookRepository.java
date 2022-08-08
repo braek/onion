@@ -14,7 +14,7 @@ public final class MockBookRepository implements BookRepository {
     private final Map<BookId, BookSnapshot> data = new HashMap<>();
 
     @Override
-    public Optional<Book> get(BookId id) {
+    public Optional<Book> getById(BookId id) {
         if (data.containsKey(id)) {
             return Optional.of(Book.fromSnapshot(data.get(id)));
         }
