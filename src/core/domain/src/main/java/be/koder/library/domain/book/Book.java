@@ -5,10 +5,10 @@ import be.koder.library.vocabulary.book.Isbn;
 
 public final class Book {
 
-    private BookId id;
-    private String title;
-    private Isbn isbn;
-    private String author;
+    private final BookId id;
+    private final String title;
+    private final Isbn isbn;
+    private final String author;
 
     public Book(BookId id, String title, Isbn isbn, String author) {
         this.id = id;
