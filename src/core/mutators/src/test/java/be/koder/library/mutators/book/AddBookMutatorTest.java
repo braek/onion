@@ -2,9 +2,9 @@ package be.koder.library.mutators.book;
 
 import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.domain.book.Book;
-import be.koder.library.domain.book.BookRepository;
 import be.koder.library.domain.book.BookSnapshot;
 import be.koder.library.test.MockBookRepository;
+import be.koder.library.test.MockEventPublisher;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,8 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("Given a mutator to add Books to library")
 class AddBookMutatorTest {
 
-    private final BookRepository bookRepository = new MockBookRepository();
-    private final AddBookMutator addBookMutator = new AddBookMutator(bookRepository);
+    private final MockBookRepository bookRepository = new MockBookRepository();
+    private final MockEventPublisher eventPublisher = new MockEventPublisher();
+    private final AddBookMutator addBookMutator = new AddBookMutator(bookRepository, eventPublisher);
 
     @Nested
     @DisplayName("when Book added")
@@ -47,6 +48,12 @@ class AddBookMutatorTest {
             assertThat(book.title()).isEqualTo(title);
             assertThat(book.isbn()).isEqualTo(isbn);
             assertThat(book.author()).isEqualTo(author);
+        }
+
+        @Test
+        @DisplayName("it should publish event")
+        void eventPublished() {
+            assertThat(eventPublisher.getLastEvent()).isNotEmpty();
         }
 
         @Test
