@@ -19,7 +19,7 @@ class IsbnTest {
         void creationSucceeded() {
             var isbn = Isbn.fromString("1112223334445");
             assertThat(isbn).isNotNull();
-            assertThat(isbn.toString()).isEqualTo("111-22-23334-44-5");
+            assertThat(isbn.toString()).isEqualTo("1112223334445");
         }
     }
 
