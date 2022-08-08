@@ -19,14 +19,14 @@ public class AddBookTest {
     @DisplayName("when valid Book added")
     class TestHappyFlow implements AddBookPresenter {
 
-        private final String bookTitle = "Harry Potter and the Philosopher's Stone";
-        private final String bookIsbn = "0-7475-3269-9";
-        private final String bookAuthor = "J. K. Rowling";
+        private final String title = "Harry Potter and the Philosopher's Stone";
+        private final String isbn = "0-7475-3269-9";
+        private final String author = "J. K. Rowling";
         private boolean addedCalled;
 
         @BeforeEach
         void setup() {
-            addBook.addBook(bookTitle, bookIsbn, bookAuthor, this);
+            addBook.addBook(title, isbn, author, this);
         }
 
         @Test
