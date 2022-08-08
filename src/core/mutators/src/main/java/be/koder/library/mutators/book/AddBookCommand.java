@@ -6,4 +6,5 @@ public record AddBookCommand(
         String title,
         String isbn,
         String author
-) implements Command {}
+) implements Command {
+}

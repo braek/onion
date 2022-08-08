@@ -8,4 +8,5 @@ public record BookListItem(
         String title,
         Isbn isbn,
         String author
-) {}
+) {
+}

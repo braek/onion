@@ -1,3 +1,4 @@
 package be.koder.library.mutators;
 
-public interface Command {}
+public interface Command {
+}

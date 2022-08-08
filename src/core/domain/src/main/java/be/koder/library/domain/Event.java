@@ -1,3 +1,4 @@
 package be.koder.library.domain;
 
-public interface Event {}
+public interface Event {
+}
