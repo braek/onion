@@ -15,7 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("Given an API to add Books to library")
 public class AddBookTest {
 
-    private final AddBook addBook = new AddBookMutator(null);
+    private final MockBookRepository bookRepository = new MockBookRepository();
+    private final AddBook addBook = new AddBookMutator(bookRepository);
 
     @Nested
     @DisplayName("when Book added")
