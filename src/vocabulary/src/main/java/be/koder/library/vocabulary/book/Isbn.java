@@ -13,7 +13,7 @@ public final class Isbn {
                 .map(String::trim)
                 .map(String::toUpperCase)
                 .orElse(null);
-        final Pattern regex = Pattern.compile("^978\\d{10}$");
+        final Pattern regex = Pattern.compile("^\\d{13}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
             throw new InvalidIsbnException(sanitized);
         }
