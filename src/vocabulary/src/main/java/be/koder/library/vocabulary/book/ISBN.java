@@ -11,7 +11,6 @@ public final class ISBN {
     public ISBN(final String str) {
         final String sanitized = Optional.ofNullable(str)
                 .map(String::trim)
-                .map(String::toUpperCase)
                 .orElse(null);
         final Pattern regex = Pattern.compile("^978\\d{10}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
