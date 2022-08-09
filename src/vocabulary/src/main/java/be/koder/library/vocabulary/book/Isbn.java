@@ -9,19 +9,15 @@ public final class Isbn {
     private final String value;
 
     private Isbn(final String str) {
-        final String sanitized = sanitize(str);
+        final String sanitized = Optional.ofNullable(str)
+                .map(String::trim)
+                .map(String::toUpperCase)
+                .orElse(null);
         final Pattern regex = Pattern.compile("^978\\d{10}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
             throw new InvalidIsbnException(sanitized);
         }
         this.value = sanitized;
-    }
-
-    private String sanitize(final String str) {
-        return Optional.ofNullable(str)
-                .map(String::trim)
-                .map(String::toUpperCase)
-                .orElse(null);
     }
 
     public static Isbn create(final String str) {
