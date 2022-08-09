@@ -82,7 +82,7 @@ class AddBookMutatorTest {
 
     @Nested
     @DisplayName("when Book added with invalid ISBN")
-    class TestInvalidIsbn implements AddBookPresenter {
+    class TestInvalidISBN implements AddBookPresenter {
 
         private final String invalidIsbn = "1408855669";
         private boolean invalidIsbnCalled;

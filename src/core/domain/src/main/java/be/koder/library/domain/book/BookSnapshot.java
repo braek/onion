@@ -1,12 +1,12 @@
 package be.koder.library.domain.book;
 
 import be.koder.library.vocabulary.book.BookId;
-import be.koder.library.vocabulary.book.Isbn;
+import be.koder.library.vocabulary.book.ISBN;
 
 public record BookSnapshot(
         BookId id,
         String title,
-        Isbn isbn,
+        ISBN isbn,
         String author
 ) {
 }

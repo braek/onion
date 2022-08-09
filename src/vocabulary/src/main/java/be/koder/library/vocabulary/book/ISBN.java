@@ -4,31 +4,31 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-public final class Isbn {
+public final class ISBN {
 
     private final String value;
 
-    private Isbn(final String str) {
+    private ISBN(final String str) {
         final String sanitized = Optional.ofNullable(str)
                 .map(String::trim)
                 .map(String::toUpperCase)
                 .orElse(null);
         final Pattern regex = Pattern.compile("^\\d{13}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
-            throw new InvalidIsbnException(sanitized);
+            throw new InvalidISBNException(sanitized);
         }
         this.value = sanitized;
     }
 
-    public static Isbn create(final String str) {
-        return new Isbn(str);
+    public static ISBN create(final String str) {
+        return new ISBN(str);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Isbn isbn = (Isbn) o;
+        ISBN isbn = (ISBN) o;
         return Objects.equals(value, isbn.value);
     }
 
