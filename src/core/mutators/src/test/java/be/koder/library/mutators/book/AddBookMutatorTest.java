@@ -4,9 +4,9 @@ import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.domain.book.Book;
 import be.koder.library.domain.book.BookAdded;
 import be.koder.library.domain.book.BookSnapshot;
-import be.koder.library.test.repository.InMemoryBookRepository;
-import be.koder.library.test.event.InMemoryEventPublisher;
 import be.koder.library.test.data.BookObjectMother;
+import be.koder.library.test.event.InMemoryEventPublisher;
+import be.koder.library.test.repository.InMemoryBookRepository;
 import be.koder.library.test.util.TestUtil;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

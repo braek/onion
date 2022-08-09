@@ -8,8 +8,8 @@ import be.koder.library.domain.book.BookAdded;
 import be.koder.library.domain.book.BookRepository;
 import be.koder.library.mutators.Mutator;
 import be.koder.library.vocabulary.book.BookId;
-import be.koder.library.vocabulary.book.InvalidISBNException;
 import be.koder.library.vocabulary.book.ISBN;
+import be.koder.library.vocabulary.book.InvalidISBNException;
 
 public final class AddBookMutator implements AddBook, Mutator<AddBookCommand, AddBookPresenter> {
 
