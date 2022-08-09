@@ -30,7 +30,6 @@ class AddBookMutatorTest {
     class TestHappyFlow implements AddBookPresenter {
 
         private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterPrisonerOfAzkaban;
-        private boolean addedCalled;
         private BookId bookId;
         private BookSnapshot savedBook;
 
@@ -64,13 +63,11 @@ class AddBookMutatorTest {
         @Test
         @DisplayName("it should provide feedback")
         void feedbackProvided() {
-            assertTrue(addedCalled);
             assertNotNull(bookId);
         }
 
         @Override
         public void added(BookId bookId) {
-            this.addedCalled = true;
             this.bookId = bookId;
         }
 

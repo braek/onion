@@ -3,8 +3,8 @@ package be.koder.library.test;
 import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.api.book.BookListItem;
 import be.koder.library.domain.book.BookSnapshot;
-import be.koder.library.test.util.TestApplicationContext;
 import be.koder.library.test.objectmother.BookObjectMother;
+import be.koder.library.test.util.TestApplicationContext;
 import be.koder.library.test.util.TestUtil;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +24,6 @@ public class AddBookTest {
     class TestHappyFlow implements AddBookPresenter {
 
         private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets;
-        private boolean addedCalled;
         private BookId bookId;
         private BookListItem savedBook;
 
@@ -50,13 +49,11 @@ public class AddBookTest {
         @Test
         @DisplayName("it should provide feedback")
         void feedbackProvided() {
-            assertTrue(addedCalled);
             assertNotNull(bookId);
         }
 
         @Override
         public void added(BookId bookId) {
-            this.addedCalled = true;
             this.bookId = bookId;
         }
 
