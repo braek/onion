@@ -1,4 +1,4 @@
-package be.koder.library.test;
+package be.koder.library.test.repository;
 
 import be.koder.library.domain.book.Book;
 import be.koder.library.domain.book.BookRepository;

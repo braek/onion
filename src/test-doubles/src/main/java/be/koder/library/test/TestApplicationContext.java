@@ -4,6 +4,8 @@ import be.koder.library.api.book.AddBook;
 import be.koder.library.api.book.ListBooks;
 import be.koder.library.mutators.book.AddBookMutator;
 import be.koder.library.queries.book.ListBooksQuery;
+import be.koder.library.test.event.InMemoryEventPublisher;
+import be.koder.library.test.repository.InMemoryBookRepository;
 
 public enum TestApplicationContext {
 

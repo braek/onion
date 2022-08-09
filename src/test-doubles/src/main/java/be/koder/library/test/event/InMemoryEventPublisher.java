@@ -1,4 +1,4 @@
-package be.koder.library.test;
+package be.koder.library.test.event;
 
 import be.koder.library.domain.Event;
 import be.koder.library.domain.EventPublisher;
