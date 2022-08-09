@@ -10,7 +10,7 @@ public final class Book {
     private final Isbn isbn;
     private final String author;
 
-    public Book(BookId id, String title, Isbn isbn, String author) {
+    private Book(BookId id, String title, Isbn isbn, String author) {
         this.id = id;
         this.title = title;
         this.isbn = isbn;
@@ -21,8 +21,8 @@ public final class Book {
         return new BookSnapshot(id, title, isbn, author);
     }
 
-    public static Book createNew(String title, Isbn isbn, String author) {
-        return new Book(BookId.createNew(), title, isbn, author);
+    public static Book create(String title, Isbn isbn, String author) {
+        return new Book(BookId.create(), title, isbn, author);
     }
 
     public static Book fromSnapshot(BookSnapshot snapshot) {

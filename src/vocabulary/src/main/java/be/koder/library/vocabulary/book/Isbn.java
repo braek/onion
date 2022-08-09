@@ -24,7 +24,7 @@ public final class Isbn {
                 .orElse(null);
     }
 
-    public static Isbn fromString(final String str) {
+    public static Isbn create(final String str) {
         return new Isbn(str);
     }
 

@@ -29,8 +29,8 @@ public final class AddBookMutator implements AddBook, Mutator<AddBookCommand, Ad
     @Override
     public void execute(AddBookCommand command, AddBookPresenter presenter) {
         try {
-            final Isbn isbn = Isbn.fromString(command.isbn());
-            final Book book = Book.createNew(command.title(), isbn, command.author());
+            final Isbn isbn = Isbn.create(command.isbn());
+            final Book book = Book.create(command.title(), isbn, command.author());
             final BookId bookId = book.takeSnapshot().id();
             bookRepository.save(book);
             eventPublisher.publish(new BookAdded(bookId));

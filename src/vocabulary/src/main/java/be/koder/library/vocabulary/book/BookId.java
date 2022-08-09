@@ -11,7 +11,7 @@ public final class BookId {
         this.value = value;
     }
 
-    public static BookId createNew() {
+    public static BookId create() {
         return new BookId(UUID.randomUUID());
     }
 
