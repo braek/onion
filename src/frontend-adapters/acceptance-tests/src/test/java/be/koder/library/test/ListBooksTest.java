@@ -3,6 +3,7 @@ package be.koder.library.test;
 import be.koder.library.api.book.BookListItem;
 import be.koder.library.test.data.BookObjectMother;
 import be.koder.library.test.presenter.MockAddBookPresenter;
+import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -21,6 +22,7 @@ class ListBooksTest {
     class TestHappyFlow {
 
         private final List<BookListItem> items = new ArrayList<>();
+        private BookId bookId;
 
         @BeforeEach
         void setup() {
@@ -28,6 +30,7 @@ class ListBooksTest {
             var presenter = new MockAddBookPresenter();
             TestApplicationContext.INSTANCE.clear();
             TestApplicationContext.INSTANCE.addBook.addBook(book.title(), book.isbn().toString(), book.author(), presenter);
+            bookId = presenter.getBookId();
             items.addAll(TestApplicationContext.INSTANCE.listBooks.listBooks());
         }
 
@@ -35,6 +38,7 @@ class ListBooksTest {
         @DisplayName("it should return items")
         void itemsReturned() {
             assertThat(items).hasSize(1);
+            assertThat(items.get(0).id()).isEqualTo(bookId);
         }
     }
 }
