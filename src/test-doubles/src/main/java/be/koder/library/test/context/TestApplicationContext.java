@@ -1,18 +1,18 @@
-package be.koder.library.test;
+package be.koder.library.test.context;
 
 import be.koder.library.api.book.AddBook;
 import be.koder.library.api.book.ListBooks;
 import be.koder.library.mutators.book.AddBookMutator;
 import be.koder.library.queries.book.ListBooksQuery;
-import be.koder.library.test.event.InMemoryEventPublisher;
-import be.koder.library.test.repository.InMemoryBookRepository;
+import be.koder.library.test.mock.MockBookRepository;
+import be.koder.library.test.mock.MockEventPublisher;
 
 public enum TestApplicationContext {
 
     INSTANCE;
 
-    private final InMemoryEventPublisher eventPublisher = new InMemoryEventPublisher();
-    private final InMemoryBookRepository bookRepository = new InMemoryBookRepository();
+    private final MockEventPublisher eventPublisher = new MockEventPublisher();
+    private final MockBookRepository bookRepository = new MockBookRepository();
 
     public final AddBook addBook = new AddBookMutator(bookRepository, eventPublisher);
     public final ListBooks listBooks = new ListBooksQuery(bookRepository);

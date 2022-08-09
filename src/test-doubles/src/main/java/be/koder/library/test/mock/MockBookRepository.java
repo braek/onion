@@ -1,4 +1,4 @@
-package be.koder.library.test.repository;
+package be.koder.library.test.mock;
 
 import be.koder.library.domain.book.Book;
 import be.koder.library.domain.book.BookRepository;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public final class InMemoryBookRepository implements BookRepository, BookArchive {
+public final class MockBookRepository implements BookRepository, BookArchive {
 
     private final Map<BookId, BookSnapshot> data = new HashMap<>();
 

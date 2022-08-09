@@ -1,4 +1,4 @@
-package be.koder.library.test.event;
+package be.koder.library.test.mock;
 
 import be.koder.library.domain.Event;
 import be.koder.library.domain.EventPublisher;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public final class InMemoryEventPublisher implements EventPublisher {
+public final class MockEventPublisher implements EventPublisher {
 
     private final List<Event> events = new ArrayList<>();
 

@@ -4,9 +4,9 @@ import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.domain.book.Book;
 import be.koder.library.domain.book.BookAdded;
 import be.koder.library.domain.book.BookSnapshot;
-import be.koder.library.test.data.BookObjectMother;
-import be.koder.library.test.event.InMemoryEventPublisher;
-import be.koder.library.test.repository.InMemoryBookRepository;
+import be.koder.library.test.mock.MockBookRepository;
+import be.koder.library.test.mock.MockEventPublisher;
+import be.koder.library.test.objectmother.BookObjectMother;
 import be.koder.library.test.util.TestUtil;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,8 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("Given a mutator to add Books to library")
 class AddBookMutatorTest {
 
-    private final InMemoryBookRepository bookRepository = new InMemoryBookRepository();
-    private final InMemoryEventPublisher eventPublisher = new InMemoryEventPublisher();
+    private final MockBookRepository bookRepository = new MockBookRepository();
+    private final MockEventPublisher eventPublisher = new MockEventPublisher();
     private final AddBookMutator addBookMutator = new AddBookMutator(bookRepository, eventPublisher);
 
     @Nested

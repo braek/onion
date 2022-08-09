@@ -1,9 +1,9 @@
-package be.koder.library.test.presenter;
+package be.koder.library.test.mock;
 
 import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.vocabulary.book.BookId;
 
-public final class TestAddBookPresenter implements AddBookPresenter {
+public final class MockAddBookPresenter implements AddBookPresenter {
 
     private BookId bookId;
 

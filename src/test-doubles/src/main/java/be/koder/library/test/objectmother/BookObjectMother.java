@@ -1,4 +1,4 @@
-package be.koder.library.test.data;
+package be.koder.library.test.objectmother;
 
 import be.koder.library.domain.book.BookSnapshot;
 import be.koder.library.vocabulary.book.BookId;
