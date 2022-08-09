@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public final class MockBookRepository implements BookRepository, BookArchive {
+public final class InMemoryBookRepository implements BookRepository, BookArchive {
 
     private final Map<BookId, BookSnapshot> data = new HashMap<>();
 

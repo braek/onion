@@ -2,7 +2,7 @@ package be.koder.library.test;
 
 import be.koder.library.api.book.BookListItem;
 import be.koder.library.test.data.BookObjectMother;
-import be.koder.library.test.presenter.MockAddBookPresenter;
+import be.koder.library.test.presenter.TestAddBookPresenter;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +27,7 @@ class ListBooksTest {
         @BeforeEach
         void setup() {
             var book = BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets;
-            var presenter = new MockAddBookPresenter();
+            var presenter = new TestAddBookPresenter();
             TestApplicationContext.INSTANCE.clear();
             TestApplicationContext.INSTANCE.addBook.addBook(book.title(), book.isbn().toString(), book.author(), presenter);
             bookId = presenter.getBookId();

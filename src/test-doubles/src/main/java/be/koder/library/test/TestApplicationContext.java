@@ -9,8 +9,8 @@ public enum TestApplicationContext {
 
     INSTANCE;
 
-    private final MockEventPublisher eventPublisher = new MockEventPublisher();
-    private final MockBookRepository bookRepository = new MockBookRepository();
+    private final InMemoryEventPublisher eventPublisher = new InMemoryEventPublisher();
+    private final InMemoryBookRepository bookRepository = new InMemoryBookRepository();
 
     public final AddBook addBook = new AddBookMutator(bookRepository, eventPublisher);
     public final ListBooks listBooks = new ListBooksQuery(bookRepository);

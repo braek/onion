@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public final class MockEventPublisher implements EventPublisher {
+public final class InMemoryEventPublisher implements EventPublisher {
 
     private final List<Event> events = new ArrayList<>();
 
