@@ -14,4 +14,11 @@ public enum BookObjectMother {
             ISBN.create("9781408855669"),
             "J. K. Rowling"
     );
+
+    public final BookSnapshot harryPotterPrisonerOfAzkaban = new BookSnapshot(
+            BookId.create(),
+            "Prisoner of Azkaban",
+            ISBN.create("9780747542155"),
+            "J. K. Rowling"
+    );
 }
