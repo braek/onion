@@ -1,7 +1,7 @@
 package be.koder.library.test;
 
 import be.koder.library.api.book.BookListItem;
-import be.koder.library.test.context.TestApplicationContext;
+import be.koder.library.test.util.TestApplicationContext;
 import be.koder.library.test.mock.MockAddBookPresenter;
 import be.koder.library.test.objectmother.BookObjectMother;
 import be.koder.library.vocabulary.book.BookId;

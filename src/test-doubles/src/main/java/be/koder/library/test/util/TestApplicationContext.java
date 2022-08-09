@@ -1,4 +1,4 @@
-package be.koder.library.test.context;
+package be.koder.library.test.util;
 
 import be.koder.library.api.book.AddBook;
 import be.koder.library.api.book.ListBooks;
