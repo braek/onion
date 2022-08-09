@@ -8,7 +8,7 @@ public final class ISBN {
 
     private final String value;
 
-    private ISBN(final String str) {
+    public ISBN(final String str) {
         final String sanitized = Optional.ofNullable(str)
                 .map(String::trim)
                 .map(String::toUpperCase)
@@ -18,10 +18,6 @@ public final class ISBN {
             throw new InvalidISBNException(sanitized);
         }
         this.value = sanitized;
-    }
-
-    public static ISBN create(final String str) {
-        return new ISBN(str);
     }
 
     @Override

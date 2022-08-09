@@ -9,16 +9,16 @@ public enum BookObjectMother {
     INSTANCE;
 
     public final BookSnapshot harryPotterAndTheChamberOfSecrets = new BookSnapshot(
-            BookId.create(),
+            BookId.generate(),
             "Harry Potter and the Chamber of Secrets",
-            ISBN.create("9781408855669"),
+            new ISBN("9781408855669"),
             "J. K. Rowling"
     );
 
     public final BookSnapshot harryPotterPrisonerOfAzkaban = new BookSnapshot(
-            BookId.create(),
+            BookId.generate(),
             "Prisoner of Azkaban",
-            ISBN.create("9780747542155"),
+            new ISBN("9780747542155"),
             "J. K. Rowling"
     );
 }

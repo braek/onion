@@ -22,7 +22,7 @@ public final class Book {
     }
 
     public static Book create(String title, ISBN isbn, String author) {
-        return new Book(BookId.create(), title, isbn, author);
+        return new Book(BookId.generate(), title, isbn, author);
     }
 
     public static Book fromSnapshot(BookSnapshot snapshot) {

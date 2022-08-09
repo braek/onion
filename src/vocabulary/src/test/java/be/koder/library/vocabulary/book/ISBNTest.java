@@ -17,7 +17,7 @@ class ISBNTest {
         @Test
         @DisplayName("it should succeed")
         void creationSucceeded() {
-            var isbn = ISBN.create("9782223334445");
+            var isbn = new ISBN("9782223334445");
             assertThat(isbn).isNotNull();
             assertThat(isbn.toString()).isEqualTo("9782223334445");
         }
@@ -30,7 +30,7 @@ class ISBNTest {
         @Test
         @DisplayName("it should throw exception")
         void exceptionThrown() {
-            assertThrows(InvalidISBNException.class, () -> ISBN.create("abc"));
+            assertThrows(InvalidISBNException.class, () -> new ISBN("abc"));
         }
     }
 }
