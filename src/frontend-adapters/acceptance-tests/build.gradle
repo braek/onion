@@ -1,7 +1,7 @@
 dependencies {
     implementation project(':api')
-    implementation project(':mutators')
-    implementation project(':queries')
+    implementation project(':vocabulary')
+    testImplementation project(':domain')
     testImplementation project(':test-doubles')
 }
 
