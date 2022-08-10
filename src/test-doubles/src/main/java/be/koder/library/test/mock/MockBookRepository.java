@@ -3,6 +3,7 @@ package be.koder.library.test.mock;
 import be.koder.library.domain.book.Book;
 import be.koder.library.domain.book.BookRepository;
 import be.koder.library.domain.book.BookSnapshot;
+import be.koder.library.domain.book.IsbnService;
 import be.koder.library.queries.book.BookArchive;
 import be.koder.library.queries.book.BookArchiveListItem;
 import be.koder.library.vocabulary.book.BookId;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public final class MockBookRepository implements BookRepository, BookArchive {
+public final class MockBookRepository implements BookRepository, BookArchive, IsbnService {
 
     private final Map<BookId, BookSnapshot> data = new HashMap<>();
 
@@ -44,7 +45,7 @@ public final class MockBookRepository implements BookRepository, BookArchive {
     }
 
     @Override
-    public boolean isExistingIsbn(Isbn isbn) {
+    public boolean exists(Isbn isbn) {
         return data.values().stream().anyMatch(it -> it.isbn().equals(isbn));
     }
 }

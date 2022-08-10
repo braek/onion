@@ -6,6 +6,7 @@ import be.koder.library.domain.EventPublisher;
 import be.koder.library.domain.book.Book;
 import be.koder.library.domain.book.BookAdded;
 import be.koder.library.domain.book.BookRepository;
+import be.koder.library.domain.book.IsbnService;
 import be.koder.library.mutators.Mutator;
 import be.koder.library.vocabulary.book.BookId;
 import be.koder.library.vocabulary.book.InvalidIsbnException;
@@ -14,10 +15,12 @@ import be.koder.library.vocabulary.book.Isbn;
 public final class AddBookMutator implements AddBook, Mutator<AddBookCommand, AddBookPresenter> {
 
     private final BookRepository bookRepository;
+    private final IsbnService isbnService;
     private final EventPublisher eventPublisher;
 
-    public AddBookMutator(BookRepository bookRepository, EventPublisher eventPublisher) {
+    public AddBookMutator(BookRepository bookRepository, IsbnService isbnService, EventPublisher eventPublisher) {
         this.bookRepository = bookRepository;
+        this.isbnService = isbnService;
         this.eventPublisher = eventPublisher;
     }
 
@@ -30,7 +33,7 @@ public final class AddBookMutator implements AddBook, Mutator<AddBookCommand, Ad
     public void execute(AddBookCommand command, AddBookPresenter presenter) {
         try {
             final Isbn isbn = new Isbn(command.isbn());
-            if (bookRepository.isExistingIsbn(isbn)) {
+            if (isbnService.exists(isbn)) {
                 presenter.existingIsbn();
                 return;
             }

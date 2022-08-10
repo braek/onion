@@ -24,7 +24,7 @@ class AddBookMutatorTest {
 
     private final MockBookRepository bookRepository = new MockBookRepository();
     private final MockEventPublisher eventPublisher = new MockEventPublisher();
-    private final AddBookMutator addBookMutator = new AddBookMutator(bookRepository, eventPublisher);
+    private final AddBookMutator addBookMutator = new AddBookMutator(bookRepository, bookRepository, eventPublisher);
 
     @Nested
     @DisplayName("when Book added")
