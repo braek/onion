@@ -18,9 +18,7 @@ public final class MockBookRepository implements BookRepository, BookArchive {
 
     @Override
     public Optional<Book> getById(BookId id) {
-        if (data.containsKey(id)) {
-            return Optional.of(Book.fromSnapshot(data.get(id)));
-        }
+        if (data.containsKey(id)) return Optional.of(Book.fromSnapshot(data.get(id)));
         return Optional.empty();
     }
 
