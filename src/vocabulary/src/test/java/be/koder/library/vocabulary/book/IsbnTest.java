@@ -2,7 +2,9 @@ package be.koder.library.vocabulary.book;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -14,12 +16,17 @@ class IsbnTest {
     @DisplayName("when valid ISBN created")
     class TestValidIsbn {
 
-        @Test
+        @ParameterizedTest
+        @ValueSource(strings = {
+                "9782223334445",
+                "9780009998888",
+                "9781117774444"
+        })
         @DisplayName("it should succeed")
-        void creationSucceeded() {
-            var isbn = new Isbn("9782223334445");
+        void creationSucceeded(String str) {
+            var isbn = new Isbn(str);
             assertThat(isbn).isNotNull();
-            assertThat(isbn.toString()).isEqualTo("9782223334445");
+            assertThat(isbn.toString()).isEqualTo(str);
         }
     }
 
@@ -27,10 +34,21 @@ class IsbnTest {
     @DisplayName("when invalid ISBN created")
     class TestInvalidIsbn {
 
-        @Test
+        @ParameterizedTest
+        @NullAndEmptySource
+        @ValueSource(strings = {
+                "abc",
+                "123",
+                "0002223334445",
+                "The Dark Knight",
+                "batman@gothamcity.com",
+                "The Legend of Zelda: Ocarina of Time",
+                "De GVR",
+                "AD1400080001001234567890"
+        })
         @DisplayName("it should throw exception")
-        void exceptionThrown() {
-            assertThrows(InvalidIsbnException.class, () -> new Isbn("abc"));
+        void exceptionThrown(String str) {
+            assertThrows(InvalidIsbnException.class, () -> new Isbn(str));
         }
     }
 }
