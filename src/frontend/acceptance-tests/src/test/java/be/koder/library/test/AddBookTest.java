@@ -4,7 +4,7 @@ import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.api.book.BookListItem;
 import be.koder.library.domain.book.BookSnapshot;
 import be.koder.library.test.objectmother.BookObjectMother;
-import be.koder.library.test.util.TestApplicationContext;
+import be.koder.library.test.context.TestApplicationContext;
 import be.koder.library.test.util.TestUtil;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
