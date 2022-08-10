@@ -65,7 +65,7 @@ public class AddBookTest {
 
     @Nested
     @DisplayName("when Book added with invalid ISBN")
-    class TestInvalidISBN implements AddBookPresenter {
+    class TestInvalidIsbn implements AddBookPresenter {
 
         private final String invalidIsbn = "0123456789";
         private boolean invalidIsbnCalled;

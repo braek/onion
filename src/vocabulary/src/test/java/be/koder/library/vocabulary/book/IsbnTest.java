@@ -8,16 +8,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Given a class to create ISBNs")
-class ISBNTest {
+class IsbnTest {
 
     @Nested
     @DisplayName("when valid ISBN created")
-    class TestValidISBN {
+    class TestValidIsbn {
 
         @Test
         @DisplayName("it should succeed")
         void creationSucceeded() {
-            var isbn = new ISBN("9782223334445");
+            var isbn = new Isbn("9782223334445");
             assertThat(isbn).isNotNull();
             assertThat(isbn.toString()).isEqualTo("9782223334445");
         }
@@ -25,12 +25,12 @@ class ISBNTest {
 
     @Nested
     @DisplayName("when invalid ISBN created")
-    class TestInvalidISBN {
+    class TestInvalidIsbn {
 
         @Test
         @DisplayName("it should throw exception")
         void exceptionThrown() {
-            assertThrows(InvalidISBNException.class, () -> new ISBN("abc"));
+            assertThrows(InvalidIsbnException.class, () -> new Isbn("abc"));
         }
     }
 }

@@ -1,16 +1,16 @@
 package be.koder.library.domain.book;
 
 import be.koder.library.vocabulary.book.BookId;
-import be.koder.library.vocabulary.book.ISBN;
+import be.koder.library.vocabulary.book.Isbn;
 
 public final class Book {
 
     private final BookId id;
     private final String title;
-    private final ISBN isbn;
+    private final Isbn isbn;
     private final String author;
 
-    private Book(BookId id, String title, ISBN isbn, String author) {
+    private Book(BookId id, String title, Isbn isbn, String author) {
         this.id = id;
         this.title = title;
         this.isbn = isbn;
@@ -21,7 +21,7 @@ public final class Book {
         return new BookSnapshot(id, title, isbn, author);
     }
 
-    public static Book create(String title, ISBN isbn, String author) {
+    public static Book create(String title, Isbn isbn, String author) {
         return new Book(BookId.generate(), title, isbn, author);
     }
 
