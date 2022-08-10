@@ -4,6 +4,7 @@ import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.domain.book.Book;
 import be.koder.library.domain.book.BookAdded;
 import be.koder.library.domain.book.BookSnapshot;
+import be.koder.library.test.mock.MockAddBookPresenter;
 import be.koder.library.test.mock.MockBookRepository;
 import be.koder.library.test.mock.MockEventPublisher;
 import be.koder.library.test.objectmother.BookObjectMother;
@@ -117,6 +118,49 @@ class AddBookMutatorTest {
         @Override
         public void existingIsbn() {
             TestUtil.INSTANCE.fail();
+        }
+    }
+
+    @Nested
+    @DisplayName("when Book added with existing ISBN")
+    class TestExistingIsbn implements AddBookPresenter {
+
+        private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterAndTheChamberOfSecrets;
+        private boolean existingIsbnCalled;
+
+        @BeforeEach
+        void setup() {
+            addBookMutator.execute(new AddBookCommand(
+                    book.title(),
+                    book.isbn().toString(),
+                    book.author()
+            ), new MockAddBookPresenter());
+            addBookMutator.execute(new AddBookCommand(
+                    book.title(),
+                    book.isbn().toString(),
+                    book.author()
+            ), this);
+        }
+
+        @Test
+        @DisplayName("it should provide feedback")
+        void feedbackProvided() {
+            assertTrue(existingIsbnCalled);
+        }
+
+        @Override
+        public void added(BookId bookId) {
+            TestUtil.INSTANCE.fail();
+        }
+
+        @Override
+        public void invalidIsbn() {
+            TestUtil.INSTANCE.fail();
+        }
+
+        @Override
+        public void existingIsbn() {
+            this.existingIsbnCalled = true;
         }
     }
 }
