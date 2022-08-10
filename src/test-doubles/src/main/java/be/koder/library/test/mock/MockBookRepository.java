@@ -6,6 +6,7 @@ import be.koder.library.domain.book.BookSnapshot;
 import be.koder.library.queries.book.BookArchive;
 import be.koder.library.queries.book.BookArchiveListItem;
 import be.koder.library.vocabulary.book.BookId;
+import be.koder.library.vocabulary.book.Isbn;
 
 import java.util.HashMap;
 import java.util.List;
@@ -40,5 +41,10 @@ public final class MockBookRepository implements BookRepository, BookArchive {
 
     public void clear() {
         data.clear();
+    }
+
+    @Override
+    public boolean isExistingIsbn(Isbn isbn) {
+        return data.values().stream().anyMatch(it -> it.isbn().equals(isbn));
     }
 }

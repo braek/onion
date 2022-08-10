@@ -16,6 +16,10 @@ public final class MockAddBookPresenter implements AddBookPresenter {
     public void invalidIsbn() {
     }
 
+    @Override
+    public void existingIsbn() {
+    }
+
     public BookId getBookId() {
         return bookId;
     }

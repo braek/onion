@@ -3,8 +3,9 @@ package be.koder.library.test;
 import be.koder.library.api.book.AddBookPresenter;
 import be.koder.library.api.book.BookListItem;
 import be.koder.library.domain.book.BookSnapshot;
-import be.koder.library.test.objectmother.BookObjectMother;
 import be.koder.library.test.context.TestApplicationContext;
+import be.koder.library.test.mock.MockAddBookPresenter;
+import be.koder.library.test.objectmother.BookObjectMother;
 import be.koder.library.test.util.TestUtil;
 import be.koder.library.vocabulary.book.BookId;
 import org.junit.jupiter.api.BeforeEach;
@@ -61,6 +62,47 @@ public class AddBookTest {
         public void invalidIsbn() {
             TestUtil.INSTANCE.fail();
         }
+
+        @Override
+        public void existingIsbn() {
+            TestUtil.INSTANCE.fail();
+        }
+    }
+
+    @Nested
+    @DisplayName("when Book added with existing ISBN")
+    class TestExistingIsbn implements AddBookPresenter {
+
+        private final BookSnapshot book = BookObjectMother.INSTANCE.harryPotterPrisonerOfAzkaban;
+        private boolean existingIsbnCalled;
+
+        @BeforeEach
+        void setup() {
+            TestApplicationContext.INSTANCE.clear();
+            TestApplicationContext.INSTANCE.addBook.addBook(book.title(), book.isbn().toString(), book.author(), new MockAddBookPresenter());
+            TestApplicationContext.INSTANCE.addBook.addBook(book.title(), book.isbn().toString(), book.author(), this);
+        }
+
+        @Test
+        @DisplayName("it should provide feedback")
+        void feedbackProvided() {
+            assertTrue(existingIsbnCalled);
+        }
+
+        @Override
+        public void added(BookId bookId) {
+            TestUtil.INSTANCE.fail();
+        }
+
+        @Override
+        public void invalidIsbn() {
+            TestUtil.INSTANCE.fail();
+        }
+
+        @Override
+        public void existingIsbn() {
+            existingIsbnCalled = true;
+        }
     }
 
     @Nested
@@ -94,6 +136,11 @@ public class AddBookTest {
         @Override
         public void invalidIsbn() {
             invalidIsbnCalled = true;
+        }
+
+        @Override
+        public void existingIsbn() {
+            TestUtil.INSTANCE.fail();
         }
     }
 }

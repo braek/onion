@@ -75,6 +75,11 @@ class AddBookMutatorTest {
         public void invalidIsbn() {
             TestUtil.INSTANCE.fail();
         }
+
+        @Override
+        public void existingIsbn() {
+            TestUtil.INSTANCE.fail();
+        }
     }
 
     @Nested
@@ -107,6 +112,11 @@ class AddBookMutatorTest {
         @Override
         public void invalidIsbn() {
             this.invalidIsbnCalled = true;
+        }
+
+        @Override
+        public void existingIsbn() {
+            TestUtil.INSTANCE.fail();
         }
     }
 }

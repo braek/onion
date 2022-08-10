@@ -6,4 +6,6 @@ public interface AddBookPresenter {
     void added(BookId bookId);
 
     void invalidIsbn();
+
+    void existingIsbn();
 }
