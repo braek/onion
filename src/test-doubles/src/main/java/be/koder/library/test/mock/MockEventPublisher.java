@@ -17,10 +17,8 @@ public final class MockEventPublisher implements EventPublisher {
     }
 
     public Optional<Event> getLastEvent() {
-        if (!events.isEmpty()) {
-            return Optional.of(events.get(events.size() - 1));
-        }
-        return Optional.empty();
+        if (events.isEmpty()) return Optional.empty();
+        return Optional.of(events.get(events.size() - 1));
     }
 
     public void clear() {
