@@ -17,6 +17,7 @@ public final class EmailAddress {
                 .orElse(null);
         if (EmailValidator.getInstance().isValid(sanitized)) {
             this.value = sanitized;
+            return;
         }
         throw new InvalidEmailAddressException(str);
     }
