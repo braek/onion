@@ -40,12 +40,12 @@ public final class MockBookRepository implements BookRepository, BookArchive, Is
         )).toList();
     }
 
-    public void clear() {
-        data.clear();
-    }
-
     @Override
     public boolean exists(Isbn isbn) {
         return data.values().stream().anyMatch(it -> it.isbn().equals(isbn));
+    }
+
+    public void clear() {
+        data.clear();
     }
 }
