@@ -15,11 +15,10 @@ public final class EmailAddress {
                 .map(String::trim)
                 .map(String::toLowerCase)
                 .orElse(null);
-        if (EmailValidator.getInstance().isValid(sanitized)) {
-            this.value = sanitized;
-            return;
+        if (!EmailValidator.getInstance().isValid(sanitized)) {
+            throw new InvalidEmailAddressException(str);
         }
-        throw new InvalidEmailAddressException(str);
+        this.value = sanitized;
     }
 
     @Override
