@@ -9,11 +9,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@DisplayName("Given a class to create e-mail addresses")
+@DisplayName("Given a class to create 'e-mail addresses'")
 public class EmailAddressTest {
 
     @Nested
-    @DisplayName("when valid e-mail address created")
+    @DisplayName("when valid 'e-mail address' created")
     class TestValidEmailAddress {
 
         @ParameterizedTest
@@ -31,7 +31,7 @@ public class EmailAddressTest {
     }
 
     @Nested
-    @DisplayName("when invalid e-mail address created")
+    @DisplayName("when invalid 'e-mail address' created")
     class TestInvalidEmailAddress {
 
         @ParameterizedTest
