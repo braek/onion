@@ -14,7 +14,7 @@ public final class Isbn {
                 .orElse(null);
         final Pattern regex = Pattern.compile("^978\\d{10}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
-            throw new InvalidIsbnException(sanitized);
+            throw new InvalidIsbnException(str);
         }
         this.value = sanitized;
     }
