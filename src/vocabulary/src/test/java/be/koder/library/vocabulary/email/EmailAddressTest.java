@@ -25,8 +25,8 @@ public class EmailAddressTest {
         @DisplayName("it should succeed")
         void creationSucceeded(String str) {
             var email = new EmailAddress(str);
-            assertThat(email).isNotNull();
             assertThat(email.toString()).isEqualTo(str.trim().toLowerCase());
+            assertThat(email.value()).isEqualTo(str.trim().toLowerCase());
         }
     }
 

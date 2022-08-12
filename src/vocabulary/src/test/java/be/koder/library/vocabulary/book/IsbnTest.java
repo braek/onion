@@ -20,12 +20,14 @@ class IsbnTest {
         @ValueSource(strings = {
                 "9782223334445",
                 "9780009998888",
-                "9781117774444"
+                "9781117774444",
+                "\r\n\t9781117774444\r\n\t"
         })
         @DisplayName("it should succeed")
         void creationSucceeded(String str) {
             var isbn = new Isbn(str);
-            assertThat(isbn.toString()).isEqualTo(str);
+            assertThat(isbn.toString()).isEqualTo(str.trim());
+            assertThat(isbn.value()).isEqualTo(str.trim());
         }
     }
 
