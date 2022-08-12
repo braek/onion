@@ -25,7 +25,6 @@ class IsbnTest {
         @DisplayName("it should succeed")
         void creationSucceeded(String str) {
             var isbn = new Isbn(str);
-            assertThat(isbn).isNotNull();
             assertThat(isbn.toString()).isEqualTo(str);
         }
     }
