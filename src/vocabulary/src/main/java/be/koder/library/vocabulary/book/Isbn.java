@@ -1,35 +1,19 @@
 package be.koder.library.vocabulary.book;
 
-import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-public final class Isbn {
+public record Isbn(String value) {
 
-    private final String value;
-
-    public Isbn(final String str) {
-        final String sanitized = Optional.ofNullable(str)
+    public Isbn {
+        final String sanitized = Optional.ofNullable(value)
                 .map(String::trim)
                 .orElse(null);
         final Pattern regex = Pattern.compile("^978\\d{10}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
-            throw new InvalidIsbnException(str);
+            throw new InvalidIsbnException(value);
         }
-        this.value = sanitized;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Isbn isbn = (Isbn) o;
-        return Objects.equals(value, isbn.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
+        value = sanitized;
     }
 
     @Override

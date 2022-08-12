@@ -2,36 +2,19 @@ package be.koder.library.vocabulary.email;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
-import java.util.Objects;
-
 import static java.util.Optional.ofNullable;
 
-public final class EmailAddress {
+public record EmailAddress(String value) {
 
-    private final String value;
-
-    public EmailAddress(final String str) {
-        final String sanitized = ofNullable(str)
+    public EmailAddress {
+        final String sanitized = ofNullable(value)
                 .map(String::trim)
                 .map(String::toLowerCase)
                 .orElse(null);
         if (!EmailValidator.getInstance().isValid(sanitized)) {
-            throw new InvalidEmailAddressException(str);
+            throw new InvalidEmailAddressException(value);
         }
-        this.value = sanitized;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EmailAddress that = (EmailAddress) o;
-        return Objects.equals(value, that.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
+        value = sanitized;
     }
 
     @Override
