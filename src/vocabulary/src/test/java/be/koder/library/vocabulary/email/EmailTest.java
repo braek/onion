@@ -10,11 +10,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Given a class to create 'e-mail addresses'")
-public class EmailAddressTest {
+public class EmailTest {
 
     @Nested
     @DisplayName("when valid 'e-mail address' created")
-    class TestValidEmailAddress {
+    class TestValidEmail {
 
         @ParameterizedTest
         @ValueSource(strings = {
@@ -24,7 +24,7 @@ public class EmailAddressTest {
         })
         @DisplayName("it should succeed")
         void creationSucceeded(String str) {
-            var email = new EmailAddress(str);
+            var email = new Email(str);
             assertThat(email.toString()).isEqualTo(str.trim().toLowerCase());
             assertThat(email.value()).isEqualTo(str.trim().toLowerCase());
         }
@@ -32,7 +32,7 @@ public class EmailAddressTest {
 
     @Nested
     @DisplayName("when invalid 'e-mail address' created")
-    class TestInvalidEmailAddress {
+    class TestInvalidEmail {
 
         @ParameterizedTest
         @NullAndEmptySource
@@ -47,7 +47,7 @@ public class EmailAddressTest {
         })
         @DisplayName("it should throw exception")
         void exceptionThrown(String str) {
-            assertThrows(InvalidEmailAddressException.class, () -> new EmailAddress(str));
+            assertThrows(InvalidEmailException.class, () -> new Email(str));
         }
     }
 }
