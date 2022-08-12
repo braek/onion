@@ -1,4 +1,4 @@
-package io.koder.library.email;
+package be.koder.library.vocabulary.email;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
