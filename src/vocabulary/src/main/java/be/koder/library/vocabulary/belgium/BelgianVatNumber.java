@@ -19,8 +19,7 @@ public final class BelgianVatNumber {
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
             throw new InvalidBelgianVatNumberException(str);
         }
-        this.value = String.format(
-                "%s %s.%s.%s",
+        this.value = String.format("%s %s.%s.%s",
                 sanitized.substring(0, 2),
                 sanitized.substring(2, 6),
                 sanitized.substring(6, 9),
