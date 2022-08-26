@@ -15,7 +15,7 @@ public final class BelgianVatNumber {
                 .map(String::toUpperCase)
                 .map(it -> it.replaceAll("[^BE\\d]", ""))
                 .orElse(null);
-        final Pattern regex = Pattern.compile("^BE(0|1)\\d{9}$");
+        final Pattern regex = Pattern.compile("^BE([01])\\d{9}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
             throw new InvalidBelgianVatNumberException(str);
         }
