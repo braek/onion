@@ -1,4 +1,4 @@
-package be.koder.library.vocabulary.book;
+package be.koder.library.vocabulary.book.exception;
 
 public final class InvalidIsbnException extends RuntimeException {
     public InvalidIsbnException(final String str) {

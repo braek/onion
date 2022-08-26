@@ -1,5 +1,7 @@
 package be.koder.library.vocabulary.book;
 
+import be.koder.library.vocabulary.book.exception.InvalidIsbnException;
+
 import java.util.Optional;
 import java.util.regex.Pattern;
 
