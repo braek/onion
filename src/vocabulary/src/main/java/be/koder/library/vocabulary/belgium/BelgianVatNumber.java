@@ -17,7 +17,7 @@ public final class BelgianVatNumber {
                 .orElse(null);
         final Pattern regex = Pattern.compile("^BE([01])\\d{9}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
-            throw new InvalidBelgianVatNumberException(str);
+            throw new InvalidBelgianVatNumberException(sanitized);
         }
         this.value = String.format("%s %s.%s.%s",
                 sanitized.substring(0, 2),
