@@ -1,7 +1,6 @@
 package be.koder.library.vocabulary.belgium;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -17,6 +16,7 @@ class BelgianVatNumberTest {
     @ValueSource(strings = {
             "be0222   333\n\n\n\r\t\t\s444",
             "BE0333444555",
+            "be0333444555",
             "BE1666777888"
     })
     void testValidBelgianVatNumber(String str) {

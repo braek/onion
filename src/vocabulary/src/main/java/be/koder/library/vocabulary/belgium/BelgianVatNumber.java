@@ -12,8 +12,8 @@ public final class BelgianVatNumber {
     public BelgianVatNumber(final String str) {
         final String sanitized = ofNullable(str)
                 .map(String::trim)
-                .map(it -> it.replaceAll("[\n\t\r\s]", ""))
                 .map(String::toUpperCase)
+                .map(it -> it.replaceAll("[^BE\\d]", ""))
                 .orElse(null);
         final Pattern regex = Pattern.compile("^BE(0|1)\\d{9}$");
         if (sanitized == null || !regex.matcher(sanitized).matches()) {
