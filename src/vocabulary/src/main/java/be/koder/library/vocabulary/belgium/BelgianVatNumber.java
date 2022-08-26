@@ -1,5 +1,7 @@
 package be.koder.library.vocabulary.belgium;
 
+import be.koder.library.vocabulary.belgium.exception.InvalidBelgianVatNumberException;
+
 import java.util.Objects;
 import java.util.regex.Pattern;
 

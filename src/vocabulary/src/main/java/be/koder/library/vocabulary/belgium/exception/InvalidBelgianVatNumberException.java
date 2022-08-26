@@ -1,4 +1,4 @@
-package be.koder.library.vocabulary.belgium;
+package be.koder.library.vocabulary.belgium.exception;
 
 public final class InvalidBelgianVatNumberException extends RuntimeException {
     public InvalidBelgianVatNumberException(String str) {
