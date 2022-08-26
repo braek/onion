@@ -1,5 +1,6 @@
 package be.koder.library.vocabulary.email;
 
+import be.koder.library.vocabulary.email.exception.InvalidEmailException;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import static java.util.Optional.ofNullable;

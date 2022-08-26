@@ -1,5 +1,6 @@
 package be.koder.library.vocabulary.email;
 
+import be.koder.library.vocabulary.email.exception.InvalidEmailException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;

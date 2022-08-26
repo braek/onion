@@ -1,4 +1,4 @@
-package be.koder.library.vocabulary.email;
+package be.koder.library.vocabulary.email.exception;
 
 public final class InvalidEmailException extends RuntimeException {
     public InvalidEmailException(String str) {
