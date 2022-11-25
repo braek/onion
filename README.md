@@ -1,1 +1,3 @@
-# Onion Architecture Base Project
+# Hexagonal Architecture Base Project
+
+Lorem Ipsum
