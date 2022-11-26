@@ -4,6 +4,7 @@ dependencies {
 
     testImplementation project(':domain')
     testImplementation project(':test-doubles')
+    testImplementation project(':use-cases')
 }
 
 description = 'acceptance-tests'
