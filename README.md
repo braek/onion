@@ -1,3 +1,3 @@
 # Hexagonal Architecture Base Project
 
-Lorem Ipsum
+This is a base project to get started with the hexagonal architecture.
