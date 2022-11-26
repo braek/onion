@@ -9,10 +9,10 @@ include(':use-cases')
 include(':vocabulary')
 
 // Application
-project(':api').projectDir = file('src/core/api')
-project(':domain').projectDir = file('src/core/domain')
-project(':use-cases').projectDir = file('src/core/use-cases')
-project(':queries').projectDir = file('src/core/queries')
+project(':api').projectDir = file('src/application/api')
+project(':domain').projectDir = file('src/application/domain')
+project(':use-cases').projectDir = file('src/application/use-cases')
+project(':queries').projectDir = file('src/application/queries')
 
 // Frontend
 project(':acceptance-tests').projectDir = file('src/infrastructure/frontend/acceptance-tests')
